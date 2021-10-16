@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { configure } from "mobx";
+import { action, configure, makeAutoObservable } from "mobx";
 import CommonStore from "./commonStore";
 import AuthStore from "./authStore";
 
@@ -10,10 +10,18 @@ export class RootStore {
   commonStore: CommonStore;
   authStore: AuthStore;
 
+  counter = 0;
   constructor() {
+    makeAutoObservable(this)
     this.commonStore = new CommonStore(this);
     this.authStore = new AuthStore(this);
 
+
+  }
+
+  @action count = () => {
+    console.log(this.counter)
+    this.counter++;
   }
 }
 

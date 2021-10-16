@@ -1,5 +1,12 @@
-import {lazy, Suspense} from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import { lazy, Suspense, useContext, useEffect } from "react";
+import { Router as  ReactRouter, Route, Switch, useHistory } from "react-router-dom";
+import { RootStoreContext } from "~/stores/rootStore";
+import { createBrowserHistory } from "history";
+import Routes from "./Routes";
+
+
+
+export const history = createBrowserHistory();
 
 const Loading = () => (
   <p className="p-4 w-full h-full text-center">
@@ -7,22 +14,17 @@ const Loading = () => (
   </p>
 );
 
-const IndexScreen = lazy(() => import('~/components/screens/Index'))
-const Page404Screen = lazy(() => import('~/components/screens/404'))
+
+
 
 export const Router = () => {
   return (
-    <BrowserRouter>
+    <ReactRouter history={history}>
       <Suspense fallback={<Loading />}>
-        <Switch>
-          <Route exact path="/">
-            <IndexScreen />
-          </Route>
-          <Route path="*">
-            <Page404Screen />
-          </Route>
-        </Switch>
+        <Routes />
       </Suspense>
-    </BrowserRouter>
+    </ReactRouter>
   )
 };
+
+
