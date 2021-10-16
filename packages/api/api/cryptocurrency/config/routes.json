@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cryptocurrencies",
+      "handler": "cryptocurrency.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cryptocurrencies/count",
+      "handler": "cryptocurrency.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cryptocurrencies/:id",
+      "handler": "cryptocurrency.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cryptocurrencies",
+      "handler": "cryptocurrency.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cryptocurrencies/:id",
+      "handler": "cryptocurrency.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cryptocurrencies/:id",
+      "handler": "cryptocurrency.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

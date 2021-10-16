@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cryptocurrencies",
+  "info": {
+    "name": "cryptocurrency",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "displayName": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "shortName": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "partners": {
+      "via": "cryptocurrencies",
+      "collection": "partner"
+    }
+  }
+}
