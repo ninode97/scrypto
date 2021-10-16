@@ -8,21 +8,21 @@ export default class CommonStore {
 
     }
 
-    @observable token: string | null = window.localStorage.getItem("accessToken");
-    @observable appLoaded = false;
-    @observable isLoading = false;
-    @observable loadingMessage = "";
+   token: string | null = window.localStorage.getItem("accessToken");
+   appLoaded = false;
+   isLoading = false;
+   loadingMessage = "";
 
-    @action setToken = (token: string) => {
+    setToken = (token: string) => {
         this.token = token;
         localStorage.setItem("accessToken", token);
     };
 
-    @action clearToken = () => {
+    clearToken = () => {
         localStorage.removeItem("accessToken");
     };
 
-    @action setAppLoaded = () => {
+    setAppLoaded = () => {
         this.appLoaded = true;
     };
 }

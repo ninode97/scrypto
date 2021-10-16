@@ -7,4 +7,17 @@ export default class AuthStore {
         this.rootStore = rootStore;
 
     }
+
+
+    @action login = () => {
+        alert('login')
+    };
+
+    @action logout = () => {
+        alert('logout')
+    };
+
+    @action current = () => {
+        alert('current')
+    };
 }
