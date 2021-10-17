@@ -1,31 +1,31 @@
-import { RootStore } from "./rootStore";
-import { observable, action, reaction } from "mobx";
-const env: ImportMetaEnv = import.meta.env;
+import { RootStore } from './rootStore'
+import { observable, action, reaction } from 'mobx'
+const env: ImportMetaEnv = import.meta.env
 
 export default class CommonStore {
-    rootStore: RootStore;
-    env: ImportMetaEnv;
+  rootStore: RootStore
+  env: ImportMetaEnv
 
-    constructor(rootStore: RootStore) {
-        this.rootStore = rootStore;
-        this.env = env;
-    }
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore
+    this.env = env
+  }
 
-   token: string | null = window.localStorage.getItem("accessToken");
-   appLoaded = false;
-   isLoading = false;
-   loadingMessage = "";
+  @observable token: string | null = window.localStorage.getItem('accessToken')
+  @observable appLoaded = false
+  @observable isLoading = false
+  @observable loadingMessage = ''
 
-    setToken = (token: string) => {
-        this.token = token;
-        localStorage.setItem("accessToken", token);
-    };
+  @action setToken = (token: string) => {
+    this.token = token
+    localStorage.setItem('accessToken', token)
+  }
 
-    clearToken = () => {
-        localStorage.removeItem("accessToken");
-    };
+  @action clearToken = () => {
+    localStorage.removeItem('accessToken')
+  }
 
-    setAppLoaded = () => {
-        this.appLoaded = true;
-    };
+  @action setAppLoaded = () => {
+    this.appLoaded = true
+  }
 }
