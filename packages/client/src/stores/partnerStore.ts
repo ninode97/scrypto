@@ -4,34 +4,36 @@ import CommonStore from './commonStore'
 import AuthStore from './authStore'
 import { RootStore } from './rootStore'
 import requests from '~/api/agent'
-import { IPartnerCryptoCurrencies } from '~/models/partner'
+import { IPartner, IPartnerCryptoCurrencies } from '~/models/partner'
 
 export class PartnerStore {
   rootStore: RootStore
-
-
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore
   }
 
-  @observable partners: IPartnerCryptoCurrencies[] = [];
-  @observable isLoadingPartners = true;
+  @observable partners: IPartnerCryptoCurrencies[] = []
+  @observable isLoadingPartners = true
 
   @action list = async () => {
     try {
-      const data = await requests.Companies.list();
+      const data = await requests.Companies.list()
       runInAction(() => {
-        this.partners = data;
-        this.isLoadingPartners = false;
+        this.partners = data
+        this.isLoadingPartners = false
       })
-      return data;
+      return data
     } catch (error) {
       console.log(error)
       runInAction(() => {
-        this.isLoadingPartners = false;
+        this.isLoadingPartners = false
       })
     }
   }
 
+  @action showLogo = (partner: IPartner) => {
+    var instanceURL = this.rootStore.commonStore.env.VITE_STRAPI_URL
+    return partner.logo ? instanceURL + partner.logo.formats.small.url : '/company.png'
+  }
 }

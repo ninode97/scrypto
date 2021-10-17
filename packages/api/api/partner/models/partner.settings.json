@@ -21,6 +21,16 @@
       "collection": "cryptocurrency",
       "via": "partners",
       "dominant": true
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
     }
   }
 }

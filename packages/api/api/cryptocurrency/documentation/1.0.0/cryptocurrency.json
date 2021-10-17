@@ -535,7 +535,8 @@
             "items": {
               "required": [
                 "id",
-                "name"
+                "name",
+                "logo"
               ],
               "properties": {
                 "id": {
@@ -549,6 +550,9 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "logo": {
+                  "type": "string"
                 },
                 "published_at": {
                   "type": "string"
